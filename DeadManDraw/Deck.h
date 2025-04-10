@@ -9,6 +9,7 @@ class Deck : public CardContainer
 {
 public:
 	Deck();
+	~Deck();
 
 	//create all the cards
 	void initialise();

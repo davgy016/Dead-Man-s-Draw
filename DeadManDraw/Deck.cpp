@@ -4,6 +4,10 @@ Deck::Deck()
 {
 }
 
+Deck::~Deck()
+{
+}
+
 void Deck::initialise()
 {
 }
