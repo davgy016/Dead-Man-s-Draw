@@ -17,15 +17,12 @@ public:
 
 	virtual void addCard(Card* card);
 	virtual Card* removeCard(int index);	
-	virtual void drawCard();
+	virtual void drawCard()=0;
 	virtual const CardCollection& getCards() const;
 	virtual int size() const;
 	virtual bool isEmpry() const;
 	virtual Card* getTopCardOfType(CardType type);
 	virtual void clear();
-
-
-
 
 };
 
