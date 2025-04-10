@@ -3,8 +3,7 @@
 #include "CardContainer.h"
 #include "Player.h"
 
-class Bank :
-    public CardContainer
+class Bank : public CardContainer
 {
 protected:
     Player* _player;
