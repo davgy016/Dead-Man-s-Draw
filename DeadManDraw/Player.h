@@ -1,16 +1,19 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
-#include "Game.h"
-#include "PlayeArea.h"
-#include "Bank.h"
-#include "Card.h"
+
+class Game;
+class PlayArea;
+class Bank;
+class Card;
+
+
 
 class Player
 {
 protected:
 	std::string _name;
-	PlayeArea* _playArea;
+	PlayArea* _playArea;
 	Bank* _bank;
 	bool _busted;
 

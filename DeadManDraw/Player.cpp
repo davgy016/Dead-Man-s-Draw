@@ -18,7 +18,7 @@ void Player::intialise()
 
 const std::string& Player::getName() const
 {
-	
+	return "";
 }
 
 PlayArea* Player::getPlayeAre() const

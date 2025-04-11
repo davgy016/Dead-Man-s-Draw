@@ -15,7 +15,7 @@ int Card::getValue() const
 	return _pointValue;
 }
 
-const CardType& Card::type() const
+const CardType& Card::getType() const
 {
 	
 }
