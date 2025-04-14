@@ -131,6 +131,7 @@
     <ClCompile Include="CannonCard.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardContainer.cpp" />
+    <ClCompile Include="ChestCard.cpp" />
     <ClCompile Include="DeadManDraw.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="DiscardPile.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="CannonCard.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardContainer.h" />
+    <ClInclude Include="ChestCard.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="DiscardPile.h" />
     <ClInclude Include="Game.h" />
