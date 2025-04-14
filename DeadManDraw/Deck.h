@@ -14,10 +14,12 @@ public:
 	//create all the cards
 	void initialise();
 	
-	void shuffle();
+	void shuffleDeck();
 	
 	//peek top card of Deck
 	Card* peekCard()const;
+
+	Card* removeCard() override;
 	
 };
 
