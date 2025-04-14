@@ -16,7 +16,7 @@ Deck::~Deck()
 
 void Deck::initialise()
 {
-	for (int i = 2; i <= 7; i++) {
+	for (int i = 2; i <= 7; i++) {		
 		cards.push_back(new CannonCard(i));
 	}
 }
