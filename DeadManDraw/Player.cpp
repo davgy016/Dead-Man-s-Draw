@@ -1,59 +1,85 @@
 #include "Player.h"
+#include "Bank.h"
+#include "PlayArea.h"
+#include "Game.h"
 #include <iostream>
 
 using namespace std;
 
-Player::Player()
+Player::Player() :
+	_busted(false)
 {
+	_playArea = new PlayArea();
+	_bank = new Bank(this);
+	intialise();
 }
 
 Player::~Player()
 {
-	cout<<"Player destroyed"<<endl;
+	delete _playArea;
+	delete _bank;
+	cout << "Player destroyed" << endl;
 }
 
 void Player::intialise()
 {
+	std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally", "Joe", "Sue", "Sasha", "Tina", "Marge" };
+	_name = names[rand() % 10];
 }
 
 const std::string& Player::getName() const
 {
-	return "";
+	return  _name;
 }
 
 PlayArea* Player::getPlayeAre() const
 {
-	return nullptr;
+	return _playArea;
 }
 
 Bank* Player::getBank() const
 {
-	return nullptr;
+	return _bank;
 }
 
 bool Player::hasBusted() const
 {
-	return false;
+	return _busted;
 }
 
 bool Player::playCard(Card* card, Game& game)
 {
-	return false;
+	//card= game.getDeck()->removeCard();
+	_playArea->addCard(card);
+	if (_playArea->isBust(card)) {
+		_busted = true;
+		std::cout << "Bust! Drew " << card->str() << " but play area already had  this suit" << std::endl;
+		return true;
+	}
+	else {
+		card->play(game, *this);
+		return false;
+	}
+
 }
 
-void Player::bankCards()
+void Player::bankCards(Game&game)
 {
+	
 }
 
 void Player::printPlayerArea() const
 {
+	
 }
 
 void Player::printBank() const
 {
+	std::cout << "Bank:" << std::endl;
+	_bank->print();
 }
 
 int Player::getScore() const
 {
-	return 0;
+	
 }

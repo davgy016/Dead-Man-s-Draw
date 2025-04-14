@@ -1,9 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
+#include "PlayArea.h"
+
 
 class Game;
-class PlayArea;
 class Bank;
 class Card;
 
@@ -39,7 +40,7 @@ public:
 	bool playCard(Card* card, Game& game);
 
 	// Bank the cards in the playe area
-	void bankCards();
+	void bankCards(Game& game);
 
 	void printPlayerArea() const;
 
