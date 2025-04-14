@@ -82,15 +82,26 @@ void Player::bankCards(Game&game)
 
 void Player::printPlayerArea() const
 {
-	
+	std::cout << "Play Area:" << std::endl;
+
+	VectorContainer& cards = _playArea->getCards();
+	if (cards.empty()) {
+		std::cout << "Empty" << std::endl;
+		return;
+	}
+	for (Card* card : cards) {
+		std::cout << card->str() << std::endl;
+	}
 }
 
 void Player::printBank() const
 {
-	
+	std::cout << "Bank:" << std::endl;
+	_bank->print();
 }
 
 int Player::getScore() const
 {
-	
+	int sumScore = _bank->calculateScore();
+	return sumScore;
 }
