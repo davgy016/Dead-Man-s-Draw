@@ -47,7 +47,7 @@ void Game::initialiseGame()
 void Game::startGame()
 {
 	std::cout << "Start the game" << std::endl;
-	std::cout << "Players: " << _players.at(0) <<" vs " << _players.at(1) << std::endl;
+	std::cout << "Players: " << _players.at(0)->getName() <<" vs " << _players.at(1)->getName() << std::endl;
 
 	while (_currentTurn <= _maxTurns && _deck->size() > 0) {
 		printGameState();
@@ -135,9 +135,10 @@ void Game::handlePlayerTurn()
 		busted = currentPlayer->playCard(drawnCard, *this);		
 
 		if (busted) {			
-			
+			_discardPile->addCard(drawnCard);
 			break;
 		}
+		
 		currentPlayer->printPlayerArea();
 		std::cout << "Draw again? (y/n): ";
 		std::string response;
