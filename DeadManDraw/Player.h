@@ -24,7 +24,7 @@ public:
 	~Player();
 
 	//select player with a random name
-	void intialise();
+	void initialise();
 
 	const std::string& getName() const;
 

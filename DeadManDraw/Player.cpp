@@ -11,7 +11,7 @@ Player::Player() :
 {
 	_playArea = new PlayArea();
 	_bank = new Bank(this);
-	intialise();
+	initialise();
 }
 
 Player::~Player()
@@ -21,7 +21,7 @@ Player::~Player()
 	cout << "Player destroyed" << endl;
 }
 
-void Player::intialise()
+void Player::initialise()
 {
 	std::string names[] = { "Sam", "Billy", "Jen", "Bob", "Sally", "Joe", "Sue", "Sasha", "Tina", "Marge" };
 	_name = names[rand() % 10];
@@ -50,16 +50,15 @@ bool Player::hasBusted() const
 bool Player::playCard(Card* card, Game& game)
 {
 	//card= game.getDeck()->removeCard();
-	_playArea->addCard(card);
 	if (_playArea->isBust(card)) {	
 		_busted = true;
-		std::cout << "Bust! Drew " << card->str() << ", play area already had  this suit" << std::endl;
-		game.getDiscardPile();
+		std::cout << "Bust! Drew " << card->str() << ", play area already had  this suit" << std::endl;		
 		_playArea->moveAllCardsTo(game.getDiscardPile()->getCards());
 		return true;
 	}
 	else {
 		card->play(game, *this);
+		_playArea->addCard(card);
 		return false;
 	}
 
