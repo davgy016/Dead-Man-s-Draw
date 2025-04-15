@@ -4,7 +4,7 @@
 #include "Game.h"
 
 KeyCard::KeyCard(int value):
-	Card(value, Chest)
+	Card(value, Key)
 {
 }
 
