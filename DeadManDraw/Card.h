@@ -5,7 +5,7 @@
 class Game;
 class Player;
 
-enum CardType { Cannon, Chest, Key, Sword, Hook, Oracle, Map, Mermaid, Kraken };
+enum CardType { Cannon, Chest, Key, Sword, Hook, Oracle, Map, Mermaid, Kraken, Invalid=-1};
 
 class Card
 {
