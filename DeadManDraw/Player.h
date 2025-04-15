@@ -48,6 +48,7 @@ public:
 
 	int getScore() const;
 
+	CardType selectCardTypeFromBank(Game& game, Player* targetPlayer);
 };
 
 #endif //PLAYER_H

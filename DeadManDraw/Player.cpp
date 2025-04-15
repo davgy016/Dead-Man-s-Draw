@@ -81,6 +81,50 @@ void Player::bankCards(Game&game)
 	_busted = false;
 }
 
+CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
+{
+	Bank* bank = targetPlayer->getBank();
+	MapContainer& bankCards = targetPlayer->getBank()->getCards();
+
+	std::vector<CardType> availableSuits;
+	int index = 1;
+
+	//if each suit has cards, then gets card type with highest value and stores in new vector of availableSuits. Then display available suits for user to choose
+	//Note: in bank cards is always sorted by highest to lowest
+	if (!bankCards.empty()) {
+		std::cout << "Available suits to discard from " << targetPlayer->getName() << "'s Bank:" << std::endl;
+	}
+	for (auto& pair : bankCards) {
+		if (!pair.second.empty()) {
+			CardType ct = pair.first;
+			availableSuits.push_back(ct);
+			std::cout << index << "  " << pair.second.front()->str() << std::endl;
+			index++;
+		}
+	}
+	// Check if there are any available suits to discard
+	if (availableSuits.empty()) {
+		std::cout << "No cards available to discard from " << targetPlayer->getName() << "'s Bank" << std::endl;
+		return Invalid;
+	}
+
+	//user select suit to discard
+	int choice = 0;
+	while (choice<1 || choice > availableSuits.size()) {
+		std::cout << "Choose a suit to discard 1-" << availableSuits.size() << std::endl;
+		std::cin >> choice;
+
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			choice = 0;
+			std::cout << "Invalid input. Please enter a number." << std::endl;
+		}
+	}
+
+	return availableSuits[choice - 1];
+}
+
 void Player::printPlayerArea() const
 {
 	std::cout << "Play Area:" << std::endl;
@@ -106,3 +150,5 @@ int Player::getScore() const
 	int sumScore = _bank->calculateScore();
 	return sumScore;
 }
+
+
