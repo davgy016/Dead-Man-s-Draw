@@ -46,6 +46,10 @@ bool Player::hasBusted() const
 {
 	return _busted;
 }
+void Player::setBusted(bool busted)
+{
+	_busted = busted;
+}
 
 bool Player::playCard(Card* card, Game& game)
 {
@@ -57,8 +61,11 @@ bool Player::playCard(Card* card, Game& game)
 		return true;
 	}
 	else {
-		card->play(game, *this);
 		_playArea->addCard(card);
+		card->play(game, *this);
+		if (_busted) {
+			return true;
+		}
 		return false;
 	}
 

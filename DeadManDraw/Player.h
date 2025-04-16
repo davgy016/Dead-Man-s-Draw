@@ -49,6 +49,8 @@ public:
 	int getScore() const;
 
 	CardType selectCardTypeFromBank(Game& game, Player* targetPlayer);
+
+	void setBusted(bool busted);
 };
 
 #endif //PLAYER_H

@@ -52,6 +52,7 @@ void SwordCard::play(Game& game, Player& player)
 		player.getPlayArea()->moveAllCardsTo(game.getDiscardPile()->getCards());
 		//The stolen card add into discardPile
 		game.getDiscardPile()->addCard(cardToSteal);
+		player.setBusted(true);
 	}
 	else {
 		player.getPlayArea()->addCard(cardToSteal);
