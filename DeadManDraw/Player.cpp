@@ -117,15 +117,22 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 
 	//user select suit to discard
 	int choice = 0;
-	while (choice<1 || choice > availableSuits.size()) {
+	bool validInput = false;
+	while (!validInput) {
 		std::cout << "Choose a suit to discard 1-" << availableSuits.size() << std::endl;
 		std::cin >> choice;
 
 		if (std::cin.fail()) {
 			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			choice = 0;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');			
 			std::cout << "Invalid input. Please enter a number." << std::endl;
+		}
+		else if (choice<1 || choice > availableSuits.size()) {
+			std::cout << "Invalid choice. Enter number between 1 and " << availableSuits.size() << std::endl;
+		}
+		else {
+			validInput = true;
+			std::cout<<"You shoot card out from other player's bank" << std::endl;
 		}
 	}
 
