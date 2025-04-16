@@ -54,10 +54,11 @@ void Player::setBusted(bool busted)
 bool Player::playCard(Card* card, Game& game)
 {
 	//card= game.getDeck()->removeCard();
-	if (_playArea->isBust(card)) {	
+	if (_playArea->isBust(card)) {
 		_busted = true;
-		std::cout << "Bust! Drew " << card->str() << ", play area already had  this suit" << std::endl;		
+		std::cout << "Bust! Drew " << card->str() << ", play area already had  this suit" << std::endl;
 		_playArea->moveAllCardsTo(game.getDiscardPile()->getCards());
+		game.getDiscardPile()->addCard(card);
 		return true;
 	}
 	else {
@@ -71,7 +72,7 @@ bool Player::playCard(Card* card, Game& game)
 
 }
 
-void Player::bankCards(Game&game)
+void Player::bankCards(Game& game)
 {
 	VectorContainer cards = _playArea->getCards();
 
@@ -124,7 +125,7 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 
 		if (std::cin.fail()) {
 			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');			
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Invalid input. Please enter a number." << std::endl;
 		}
 		else if (choice<1 || choice > availableSuits.size()) {
@@ -132,7 +133,7 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 		}
 		else {
 			validInput = true;
-			std::cout<<"You shoot card out from other player's bank" << std::endl;
+			std::cout << "You shoot card out from other player's bank" << std::endl;
 		}
 	}
 
@@ -149,7 +150,7 @@ void Player::printPlayerArea() const
 		return;
 	}
 	for (Card* card : cards) {
-		std::cout <<"  " << card->str() << std::endl;
+		std::cout << "  " << card->str() << std::endl;
 	}
 }
 

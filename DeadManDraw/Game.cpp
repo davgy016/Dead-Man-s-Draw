@@ -121,6 +121,7 @@ void Game::handlePlayerTurn()
 	Player* currentPlayer = getCurrentPlayer();
 	bool continueTurn = true;
 	bool busted = false;
+	currentPlayer->setBusted(false);
 
 	std::cout << currentPlayer->getName() << "'s turn" << std::endl;
 
@@ -135,8 +136,7 @@ void Game::handlePlayerTurn()
 
 		busted = currentPlayer->playCard(drawnCard, *this);
 
-		if (busted) {
-			_discardPile->addCard(drawnCard);
+		if (busted) {			
 			break;
 		}
 
