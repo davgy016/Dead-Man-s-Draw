@@ -10,8 +10,10 @@
 #include "KrakenCard.h"
 #include <iostream>
 
-typedef std::vector<Card*> cardCollection;
+typedef std::vector<Card*> CardCollection;
+const CardType allCardTypes[] = { Cannon, Chest, Key, Sword, Hook, Oracle, Map, Mermaid, Kraken };
 
+//create single card
 Card* CardFactory::createCard(CardType type, int value)
 {
     switch (type) {
@@ -40,9 +42,10 @@ Card* CardFactory::createCard(CardType type, int value)
     }
 }
 
-cardCollection CardFactory::createCardsOfType(CardType type)
+//create cards for specified type
+CardCollection CardFactory::createCardsOfType(CardType type)
 {
-    cardCollection cards;
+    CardCollection cards;
     int maxValue = getMaxValue(type);
     int minValue = getMinValue(type);
     for (int value = minValue; value <= maxValue; ++value) {
@@ -52,9 +55,15 @@ cardCollection CardFactory::createCardsOfType(CardType type)
     return cards;
 }
 
-cardCollection CardFactory::createAllCards()
+//create all cards of all types
+CardCollection CardFactory::createAllCards()
 {
-    return std::vector<Card*>();
+    CardCollection allCards;
+    for (const auto& type : allCardTypes) {
+        CardCollection cardsOfType = createCardsOfType(type);
+        allCards.insert(allCards.end(), cardsOfType.begin(), cardsOfType.end());
+    }
+    return allCards;
 }
 
 int CardFactory::getMinValue(CardType type)
