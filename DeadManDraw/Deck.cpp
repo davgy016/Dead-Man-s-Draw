@@ -32,10 +32,11 @@ void Deck::initialise()
 		cards.push_back(new HookCard(i));
 		cards.push_back(new OracleCard(i));
 		cards.push_back(new MapCard(i));
-		cards.push_back(new MermaidCard(i));
+		cards.push_back(new MermaidCard(i+2));
 		cards.push_back(new KrakenCard(i));
 
 	}
+	shuffleDeck();
 }
 
 void Deck::shuffleDeck()
