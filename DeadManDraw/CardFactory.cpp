@@ -10,6 +10,11 @@ std::vector<Card*> CardFactory::createCardsOfType(CardType type)
     return std::vector<Card*>();
 }
 
+std::vector<Card*> CardFactory::createAllCards()
+{
+    return std::vector<Card*>();
+}
+
 int CardFactory::getMinValue(CardType type)
 {
     return 0;
