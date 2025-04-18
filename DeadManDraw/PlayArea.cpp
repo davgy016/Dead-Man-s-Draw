@@ -9,6 +9,7 @@ PlayArea::PlayArea():
 PlayArea::~PlayArea()
 {
 	cards.clear();
+	std::cout << "Play Area Destroyed" << std::endl;
 }
 
 //add card into play area

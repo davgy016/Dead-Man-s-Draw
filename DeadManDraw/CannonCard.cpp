@@ -12,6 +12,7 @@ CannonCard::CannonCard(int value) :
 
 CannonCard::~CannonCard()
 {
+	std::cout << "Cannon Card Destroyed" << std::endl;
 }
 
 
@@ -22,7 +23,7 @@ std::string CannonCard::str() const
 
 void CannonCard::play(Game& game, Player& player)
 {
-	std::cout << "Discard the top card (i.e. the highest value) of any suit from the other player’s Bank to the Discard Pile. " << std::endl;
+	std::cout << "Discard the top card (i.e. the highest value) of any suit from the other player's Bank to the Discard Pile. " << std::endl;
 
 	Player* otherPlayer = game.getOtherPlayer();
 	Bank* otherBank = otherPlayer->getBank();
@@ -42,6 +43,7 @@ void CannonCard::play(Game& game, Player& player)
 
 	//remove card and add into Discard Pile
 	Card* discardCard = otherBank->removeCard(chosenType);
+	std::cout << "Shoot " << discardCard->str() <<" out from other player's bank" << std::endl;
 	game.getDiscardPile()->addCard(discardCard);
 	
 }

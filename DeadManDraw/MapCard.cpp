@@ -38,7 +38,7 @@ void MapCard::play(Game& game, Player& player)
 	int choice = 0;
 	bool validInput = false;
 	while (!validInput) {
-		std::cout << "Choose a suit to discard 1-" << drawnCards.size() << std::endl;
+		std::cout << "Choose a suit to discard 1-" << drawnCards.size() <<": ";
 		std::cin >> choice;
 
 		if (std::cin.fail()) {
@@ -54,11 +54,11 @@ void MapCard::play(Game& game, Player& player)
 
 		}
 	}
-	Card* chosenCard = drawnCards[choice - 1];
+	Card* chosenCard = drawnCards[choice - 1];	
 	drawnCards.erase(drawnCards.begin() + (choice - 1));
 	discardPile->addCards(drawnCards);
 
-	std::cout << chosenCard->str()<<std::endl;	
+	std::cout <<"Selected " << chosenCard->str()<<" - ";
 
 	player.playCard(chosenCard, game);
 

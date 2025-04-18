@@ -123,7 +123,7 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 	while (!validInput) {
 		if (availableSuits.size() > 0) {
 
-		std::cout << "Choose a suit to discard 1-" << availableSuits.size() << std::endl;
+		std::cout << "Choose a suit to discard 1-" << availableSuits.size()<<": ";
 		std::cin >> choice;
 		}
 

@@ -34,7 +34,7 @@ void KrakenCard::play(Game& game, Player& player)
 			break;
 		}
 
-		std::cout << "Drew " << drawnCard->str() << std::endl;
+		std::cout << "Drew "<<i+1 <<": " << drawnCard->str() << std::endl;
 
 		bool busted = player.playCard(drawnCard, game);
 

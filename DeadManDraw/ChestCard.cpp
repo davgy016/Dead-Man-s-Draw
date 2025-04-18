@@ -23,7 +23,7 @@ std::string ChestCard::str() const
 
 void ChestCard::play(Game& game, Player& player)
 {
-	std::cout << "Chest ability: No immediate effect. If banked with a Key card, draw bonus cards from the Discard pile." << std::endl;
+	std::cout << "No immediate effect. If banked with a Key card, draw bonus cards from the Discard pile." << std::endl;
 
 
 }
@@ -43,28 +43,28 @@ void ChestCard::willAddToBank(Game& game, Player& player)
 	}
 
 	if (hasKeyCard) {
-		
+
 		/*std::cout << "Chest key combination activated" << std::endl;*/
 
-			//use this number for DiscardPile
-			int numCardsOfPlayArea = playAreaCards.size();
-			//draw same number of cards as are in playerArea and store in vector container
-			VectorContainer drawnCards = game.getDiscardPile()->drawCards(numCardsOfPlayArea);
-			if (drawnCards.empty()) {
-				std::cout << "No cards in Discard Pile to to get bonus cards" << std::endl;
-			}
-			else {
-				std::cout << "Chest-key activated. Bonus cards: ";
-				for (Card* card : drawnCards) {
-					std::cout << "  " << card->str();
-
-					//add cards to the bank
-					player.getBank()->addCard(card);				
-					
-				}
-				std::cout << std::endl;
-			}		
-
+		//use this number for DiscardPile
+		int numCardsOfPlayArea = playAreaCards.size();
+		//draw same number of cards as are in playerArea and store in vector container
+		VectorContainer drawnCards = game.getDiscardPile()->drawCards(numCardsOfPlayArea);
+		if (drawnCards.empty()) {
+			std::cout << "No cards in Discard Pile to to get bonus cards" << std::endl;
 		}
-	
+		else {
+			std::cout << "Chest-key activated. Bonus cards: ";
+			for (Card* card : drawnCards) {
+				std::cout << "  " << card->str();
+
+				//add cards to the bank
+				player.getBank()->addCard(card);
+
+			}
+			std::cout << std::endl;
+		}
+
+	}
+
 }

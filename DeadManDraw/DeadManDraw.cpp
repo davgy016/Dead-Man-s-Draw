@@ -34,8 +34,8 @@ int main()
     Game& game = Game::getInstance();
     game.initialiseGame();
     game.startGame();
-    Card* card = new KeyCard(4);
-    game.getCurrentPlayer()->playCard(card, game);
+    /*Card* card = new KeyCard(4);
+    game.getCurrentPlayer()->playCard(card, game);*/
 
    /* PlayArea p;
     Card* c = new CannonCard(3);
