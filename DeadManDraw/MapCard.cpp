@@ -23,7 +23,8 @@ void MapCard::play(Game& game, Player& player)
 
 	DiscardPile* discardPile = game.getDiscardPile();
 
-	VectorContainer drawnCards = discardPile->drawCards(3);
+	int numCards = std::min(3, static_cast<int>(discardPile->size()));
+	VectorContainer drawnCards = discardPile->drawCards(numCards);
 
 	if (drawnCards.empty()) {
 		std::cout << "No cards in Discard Pile to draw" << std::endl;
@@ -59,20 +60,7 @@ void MapCard::play(Game& game, Player& player)
 
 	std::cout << chosenCard->str()<<std::endl;	
 
-	//check if adding card cause bust
-	if (player.getPlayArea()->isBust(chosenCard)) {
-		std::cout << "Bust! You lost all cards" << std::endl;
-		//removes cards from playArea and stores in discardPile
-		player.getPlayArea()->moveAllCardsTo(game.getDiscardPile()->getCards());
-		//The stolen card add into discardPile
-		game.getDiscardPile()->addCard(chosenCard);
-		player.setBusted(true);
-	}
-	else {
-		//add card into playArea and new card plays its ability		
-		player.getPlayArea()->addCard(chosenCard);
-		chosenCard->play(game, player);
-	}
+	player.playCard(chosenCard, game);
 
 }
 

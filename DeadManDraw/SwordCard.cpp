@@ -20,7 +20,7 @@ std::string SwordCard::str() const
 
 void SwordCard::play(Game& game, Player& player)
 {
-	std::cout << "Steal the top card (i.e. the highest value) of any suit from the other player’s Bank into your Play Area. You must select one card. " << std::endl;
+	std::cout << "Steal the top card (i.e. the highest value) of any suit from the other player's Bank into your Play Area. You must select one card. " << std::endl;
 
 	Player* otherPlayer = game.getOtherPlayer();
 	Bank* otherBank = otherPlayer->getBank();
@@ -46,16 +46,6 @@ void SwordCard::play(Game& game, Player& player)
 	}
 	std::cout << "Played " << cardToSteal->str() << " from "<<otherPlayer->getName()<<" Bank into your Play Area" << std::endl;
 	//check if adding card cause bust
-	if (player.getPlayArea()->isBust(cardToSteal)) {
-		std::cout << "Bust! You lost all cards" << std::endl;
-		//removes cards from playArea and stores in discardPile
-		player.getPlayArea()->moveAllCardsTo(game.getDiscardPile()->getCards());
-		//The stolen card add into discardPile
-		game.getDiscardPile()->addCard(cardToSteal);
-		player.setBusted(true);
-	}
-	else {
-		player.getPlayArea()->addCard(cardToSteal);
-	}
+	player.playCard(cardToSteal, game);
 	
 }

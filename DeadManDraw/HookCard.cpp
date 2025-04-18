@@ -48,16 +48,5 @@ void HookCard::play(Game& game, Player& player)
 	}
 
 	std::cout << "Played " << cardToPlay->str() << " from your Bank into your Play Area" << std::endl;
-	//check if adding card cause bust
-	if (player.getPlayArea()->isBust(cardToPlay)) {
-		std::cout << "Bust! You lost all cards" << std::endl;
-		//removes cards from playArea and stores in discardPile
-		player.getPlayArea()->moveAllCardsTo(game.getDiscardPile()->getCards());
-		//The stolen card add into discardPile
-		game.getDiscardPile()->addCard(cardToPlay);
-		player.setBusted(true);
-	}
-	else {
-		player.getPlayArea()->addCard(cardToPlay);
-	}
+	player.playCard(cardToPlay, game);
 }
