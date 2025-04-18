@@ -29,8 +29,7 @@ void MapCard::play(Game& game, Player& player)
 		std::cout << "No cards in Discard Pile to draw" << std::endl;
 		return;
 	}
-	//display drawn cards from discard pile
-	std::cout << "Drew" << drawnCards.size() << " cards from discard pile: " << std::endl;
+	//display drawn cards from discard pile	
 	for (int i = 0; i < drawnCards.size(); ++i) {
 		std::cout << "  " << i + 1 << "  " << drawnCards[i]->str() << std::endl;
 	}
@@ -55,11 +54,10 @@ void MapCard::play(Game& game, Player& player)
 		}
 	}
 	Card* chosenCard = drawnCards[choice - 1];
-	player.getPlayArea()->addCard(chosenCard);
-
 	drawnCards.erase(drawnCards.begin() + (choice - 1));
-
 	discardPile->addCards(drawnCards);
+
+	std::cout << chosenCard->str()<<std::endl;	
 
 	//check if adding card cause bust
 	if (player.getPlayArea()->isBust(chosenCard)) {

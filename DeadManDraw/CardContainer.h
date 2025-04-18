@@ -27,7 +27,7 @@ public:
 	//virtual bool isEmpty() const { return cards.empty(); }
 	virtual Card* getTopCardOfType(CardType type) { return nullptr; }
 	//virtual void clear() {};
-	virtual ContainerType& getCards() { return cards; }
+	virtual ContainerType& getCards() { return cards; }	
 
 };
 // Template destructor implementation
