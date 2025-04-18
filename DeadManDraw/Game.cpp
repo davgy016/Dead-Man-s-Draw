@@ -19,7 +19,8 @@ Game::~Game()
 	for (Player* player : _players) {
 		delete player;
 	}
-
+	_players.clear();
+	std::cout << "Game Destroyed" << std::endl;
 }
 
 //ensure only one game instance exists at all time

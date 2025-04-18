@@ -20,7 +20,11 @@ Deck::Deck() :
 
 Deck::~Deck()
 {
-	std::cout << "Deck Destoryed" << std::endl;
+	for (Card* c : cards) {
+		delete c;
+	}
+	cards.clear();
+	std::cout << "Deck Destroyed" << std::endl;
 }
 
 void Deck::initialise()

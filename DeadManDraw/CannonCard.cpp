@@ -12,7 +12,7 @@ CannonCard::CannonCard(int value) :
 
 CannonCard::~CannonCard()
 {
-	std::cout << "Cannon Card Destroyed" << std::endl;
+	//std::cout << "Cannon Card Destroyed" << std::endl;
 }
 
 

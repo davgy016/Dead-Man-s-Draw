@@ -10,6 +10,14 @@ Bank::Bank(Player* player):
 
 Bank::~Bank()
 {
+    for (auto&pair : cards) {
+        for (Card* c : pair.second) {
+            delete c;
+        }
+        pair.second.clear();        
+    }    
+    cards.clear();
+    std::cout << "Bank Destroyed" << std::endl;
 }
 
 Player* Bank::getPlayer() const

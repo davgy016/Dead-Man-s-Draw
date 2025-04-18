@@ -10,8 +10,8 @@ DiscardPile::DiscardPile() :
 
 DiscardPile::~DiscardPile()
 {
-	for (Card* card : cards) {
-		delete card;
+	for (Card* c : cards) {
+		delete c;
 	}
 	cards.clear();
 	cout << "Discard Pile destroyed" << endl;
