@@ -27,6 +27,7 @@ Deck::~Deck()
 	std::cout << "Deck Destroyed" << std::endl;
 }
 
+//calls factory to create all the cards, store in its cards collection and then shuffle
 void Deck::initialise()
 {
 	VectorContainer allCards = CardFactory::createAllCards();
@@ -35,6 +36,7 @@ void Deck::initialise()
 	shuffleDeck();
 }
 
+//shuffle the deck
 void Deck::shuffleDeck()
 {
 	VectorContainer shuffleDeck{ cards.begin(), cards.end() };
@@ -43,6 +45,7 @@ void Deck::shuffleDeck()
 
 }
 
+//check the top card without removing
 Card* Deck::peekCard() const
 {
 	if (cards.empty()) {
@@ -52,6 +55,7 @@ Card* Deck::peekCard() const
 	return cards.back();
 }
 
+//remove card
 Card* Deck::removeCard() 
 {
 	if (cards.empty()) {

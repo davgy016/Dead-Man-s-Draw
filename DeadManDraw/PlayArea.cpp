@@ -20,7 +20,7 @@ void PlayArea::addCard(Card* card)
 	}
 }
 
-
+//contains game rule to check if play area is busted for specific card
 bool PlayArea::isBust(Card* newCard) const
 {
 	for (Card* existingCard : cards) {
@@ -38,6 +38,7 @@ bool PlayArea::isBust(Card* newCard) const
 
 
 //remove all cards from PlayArea when is busted and stored in target container.
+//allows to move bunch of cards from one container to another
 void PlayArea::moveAllCardsTo(VectorContainer& container)
 {
 	for (Card* card : cards) {

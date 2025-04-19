@@ -24,6 +24,8 @@ void MapCard::play(Game& game, Player& player)
 	DiscardPile* discardPile = game.getDiscardPile();
 
 	int numCards = std::min(3, static_cast<int>(discardPile->size()));
+
+	//try to draw 3 cards from discardPile and store in drawnCards
 	VectorContainer drawnCards = discardPile->drawCards(numCards);
 
 	if (drawnCards.empty()) {
@@ -54,8 +56,11 @@ void MapCard::play(Game& game, Player& player)
 
 		}
 	}
+	//store selected card
 	Card* chosenCard = drawnCards[choice - 1];	
+	//remove selected card from drawnCards
 	drawnCards.erase(drawnCards.begin() + (choice - 1));
+	//return left over cards of drawnCards to the discardPile
 	discardPile->addCards(drawnCards);
 
 	std::cout <<"Selected " << chosenCard->str()<<" - ";

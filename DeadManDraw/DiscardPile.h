@@ -1,9 +1,12 @@
 #ifndef DISCARDPILE_H
 #define DISCARDPILE_H
 
+#include "CardContainer.h" 
 
-#include "CardContainer.h"
-
+/*
+* This class stores discarded cards
+* Inherits from CardContainer with specific container type
+*/
 
 class DiscardPile : public CardContainer< VectorContainer>
 {
@@ -11,6 +14,7 @@ public:
 	DiscardPile();
 	~DiscardPile();
 
+	//add card into discardPile
 	void addCard(Card* card) override;
 
 	//bool isEmpty() const override;
@@ -21,6 +25,7 @@ public:
 	// add multiple cards. e.g when it is bust
 	void addCards(const VectorContainer& newCards);
 
+	//get card collection of discardPile
 	VectorContainer& getCards() override;
 };
 

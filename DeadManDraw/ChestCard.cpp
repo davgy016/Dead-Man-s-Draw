@@ -42,9 +42,7 @@ void ChestCard::willAddToBank(Game& game, Player& player)
 		}
 	}
 
-	if (hasKeyCard) {
-
-		/*std::cout << "Chest key combination activated" << std::endl;*/
+	if (hasKeyCard) {		
 
 		//use this number for DiscardPile
 		int numCardsOfPlayArea = playAreaCards.size();

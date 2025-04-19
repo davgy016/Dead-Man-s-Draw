@@ -2,6 +2,11 @@
 #define CARDFACTORY_H
 #include "Card.h"
 
+/*
+* This class uses static factory method pattern
+* Contains all the logic for card creation
+*/
+
 class CardFactory
 {
 public:

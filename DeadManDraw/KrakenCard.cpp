@@ -21,6 +21,8 @@ void KrakenCard::play(Game& game, Player& player)
 {
 	std::cout << "Must draw and play three cards consecutively. " << std::endl;
 
+
+	//get deck and check if it is empty
 	Deck* deck = game.getDeck();
 	for (int i = 0; i < 3; ++i) {
 		if (deck->size() == 0) {
@@ -36,6 +38,7 @@ void KrakenCard::play(Game& game, Player& player)
 
 		std::cout << "Drew "<<i+1 <<": " << drawnCard->str() << std::endl;
 
+		//play the card
 		bool busted = player.playCard(drawnCard, game);
 
 		if (busted) {

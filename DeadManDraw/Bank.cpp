@@ -21,28 +21,25 @@ Bank::~Bank()
 }
 
 
-
+// sort cards by value for specific suit 
 void Bank::sortCardsByValue(CardType type)
 {
     auto iter = cards.find(type);
     if (iter != cards.end()) {
         std::sort(iter->second.begin(), iter->second.end(), [](Card* a, Card* b) {
-            return a->getValue() > b->getValue(); // Sort from highest to lowest
+            return a->getValue() > b->getValue(); 
             });
     }
 }
 
-
+//add card into bank and then sort the entire type of added card. 
+//This allows to have always sorted cards in bank 
 void Bank::addCard(Card* card)
 {
 	if (card == nullptr) {
 		return;
 	}
 	cards[card->getType()].push_back(card);
-
-	/*std::sort(cards[card->getType()].begin(), cards[card->getType()].end(), [](Card* a, Card* b) {
-		return  a->getValue() < b->getValue();
-		});*/
 
     sortCardsByValue(card->getType());
 }
@@ -53,6 +50,7 @@ void Bank::addCard(Card* card)
 //	return nullptr;
 //}
 
+//removes the card for specific type, for example when player selects the card from options
 Card* Bank::removeCardByType(CardType type)
 {
     auto iter = cards.find(type);
@@ -72,7 +70,7 @@ Card* Bank::removeCardByType(CardType type)
     return nullptr;
 }
 
-
+//calculates the score for existing cards 
 int Bank::calculateScore()
 {
     int totalScore = 0;
@@ -93,16 +91,17 @@ MapContainer& Bank::getCards()
 	return cards;
 }
 
-Card* Bank::getTopCardOfType(CardType type)
-{
-	auto iter = cards.find(type);
-	if (iter != cards.end() && !iter->second.empty()) {
-		return iter->second.back();
-	}
+//Card* Bank::getTopCardOfType(CardType type)
+//{
+//	auto iter = cards.find(type);
+//	if (iter != cards.end() && !iter->second.empty()) {
+//		return iter->second.back();
+//	}
+//
+//	return nullptr;
+//}
 
-	return nullptr;
-}
-
+//displays the details of existing cards
 void Bank::displayBankDetails() const {
     if (cards.empty()) {
         std::cout << " 0" << std::endl;
@@ -110,11 +109,7 @@ void Bank::displayBankDetails() const {
     }
     
     for (const auto& pair : cards) {
-        std::cout << "\n  ";        
-        /*VectorContainer sortedCards = pair.second;
-        std::sort(sortedCards.begin(), sortedCards.end(), [](Card* a, Card* b) {
-            return a->getValue() > b->getValue();
-            });*/
+        std::cout << "\n  ";      
 
         for (Card* card : pair.second) {
             std::cout << card->str() << " ";

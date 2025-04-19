@@ -117,6 +117,8 @@ int Game::getCurrentTurn() const
 	return _currentTurn;
 }
 
+//manages player turns and game flow
+//contains logic when the game overs
 void Game::handlePlayerTurn()
 {
 	Player* currentPlayer = getCurrentPlayer();

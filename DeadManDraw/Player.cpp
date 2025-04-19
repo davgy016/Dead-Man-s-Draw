@@ -51,9 +51,11 @@ void Player::setBusted(bool busted)
 	_busted = busted;
 }
 
+// plays the card into the play area 
+// returns true if this causes the player to bust,  
+// otherwise the card's ability is performed and this function returns false 
 bool Player::playCard(Card* card, Game& game)
-{
-	//card= game.getDeck()->removeCard();
+{	
 	if (_playArea->isBust(card)) {
 		_busted = true;
 		std::cout << "Bust! You lost all cards" << std::endl;
@@ -72,10 +74,13 @@ bool Player::playCard(Card* card, Game& game)
 
 }
 
+//when player stops drawing card, game calls this method to bank cards from playArea
+//it checks if it has chest-key combination,if so adds bonus cards to the bank from discadPile
+//otherwise it just add the cards into the bank
 void Player::bankCards(Game& game)
 {
 	VectorContainer cards = _playArea->getCards();
-
+	
 	for (Card* card : cards) {
 		card->willAddToBank(game, *this);
 	}
@@ -89,6 +94,7 @@ void Player::bankCards(Game& game)
 	_busted = false;
 }
 
+//allows player select the card from bank e.g. play Hook, Sword, Cannon
 CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 {
 	Bank* bank = targetPlayer->getBank();
@@ -98,11 +104,7 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 	int index = 1;
 
 	//if each suit has cards, then gets card type with highest value and stores in new vector of availableSuits. Then display available suits for user to choose
-	//Note: in bank cards is always sorted by highest to lowest
-	
-	/*if (!bankCards.empty()) {
-		std::cout << "Available suits to discard from " << targetPlayer->getName() << "'s Bank:" << std::endl;
-	}*/
+	//Note: in bank cards is always sorted by highest to lowest	
 	for (auto& pair : bankCards) {
 		if (!pair.second.empty()) {
 			CardType ct = pair.first;
@@ -110,12 +112,7 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 			std::cout <<"   " << index << "  " << pair.second.front()->str() << std::endl;
 			index++;
 		}
-	}
-	// Check if there are any available suits to discard
-	/*if (availableSuits.empty()) {
-		std::cout << "No cards available to discard from " << targetPlayer->getName() << "'s Bank" << std::endl;
-		return Invalid;
-	}*/
+	}	
 
 	//user select suit to discard
 	int choice = 0;
@@ -143,6 +140,7 @@ CardType Player::selectCardTypeFromBank(Game& game, Player* targetPlayer)
 	return availableSuits[choice - 1];
 }
 
+//display play area cards
 void Player::printPlayerArea() const
 {
 	std::cout << "Play Area:" << std::endl;
@@ -157,12 +155,14 @@ void Player::printPlayerArea() const
 	}
 }
 
+//display bank cards
 void Player::printBank() const
 {
 	std::cout << "Bank:";
 	_bank->displayBankDetails();
 }
 
+//display player score
 int Player::getScore() const
 {
 	int sumScore = _bank->calculateScore();

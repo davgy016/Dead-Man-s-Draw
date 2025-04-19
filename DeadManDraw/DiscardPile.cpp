@@ -17,7 +17,7 @@ DiscardPile::~DiscardPile()
 	cout << "Discard Pile destroyed" << endl;
 }
 
-//use this method for Cannon
+//add specific card into discardpile. can use for  Cannon
 void DiscardPile::addCard(Card* card)
 {
 	if (card != nullptr) {
@@ -28,7 +28,8 @@ void DiscardPile::addCard(Card* card)
 //	return cards.empty();
 //}
 
-//remove multiple cards. e.g. check MapCardm, Chest-Key ability
+//remove multiple cards. e.g. check MapCard, Chest-Key ability
+//return card collection
 VectorContainer DiscardPile::drawCards(int numOfCards)
 {
 	VectorContainer drawnCards;
