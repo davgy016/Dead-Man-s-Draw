@@ -8,8 +8,8 @@ A C++ implementation of the Dead Man Draw card game, featuring object-oriented d
 - [Game Rules](#game-rules)
 - [Features](#features)
 - [Architecture](#architecture)
-- [Design Patterns](#design-patterns)
-- [Building and Running](#building-and-running)
+- [Design Decisions](#design-decisions)
+- [Running](#running)
 - [Future Enhancements](#future-enhancements)
 
 ## Overview
@@ -104,7 +104,7 @@ Each card type inherits from `Card` and implements unique abilities:
 - Simplifies access to game components
 - Global access point for players and cards
 
-# Run the executable
+# Running
 Navigate to x64/Release and run DeadMansDraw.exe
 
 ## Future Enhancements
